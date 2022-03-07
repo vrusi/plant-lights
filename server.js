@@ -4,7 +4,7 @@ const fs = require('fs')
 const bodyParser = require('body-parser')
 
 const app = express();
-const port = port = process.env.PORT || 80
+const port = process.env.PORT || 80
 const jsonParser = bodyParser.json()
 
 app.use(bodyParser.urlencoded({
