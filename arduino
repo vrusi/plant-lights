@@ -9,11 +9,15 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ80
 
 const char* ssid = "ssid";
 const char* password = "password";
-const char* serverName = "http://xxx:3000/lights";
+const char* serverName = "http://xxx/data";
 unsigned long lastTime = 0;
 unsigned long timerDelay = 5000;
 
 String lightsSettings;
+
+int red = 0;
+int green = 0;
+int blue = 0;
 
 void setup() {
   Serial.begin(115200);
@@ -36,17 +40,22 @@ void loop() {
 
       if (JSON.typeof(settingsParsed) == "undefined") {
         Serial.println("Parsing input failed!");
-        return;
+      } else { 
+        int tmp = settingsParsed["red"];
+        if (tmp >= 0 && tmp <= 255) {
+          red = settingsParsed["red"];
+        }
+
+        tmp = settingsParsed["green"];
+        if (tmp >= 0 && tmp <= 255) {
+          green = settingsParsed["green"];
+        }
+
+        tmp = settingsParsed["blue"];
+        if (tmp >= 0 && tmp <= 255) {
+          blue = settingsParsed["green"];
+        }
       }
-
-      JSONVar keys = settingsParsed.keys();
-      String jsonStringRed = JSON.stringify(settingsParsed["red"]);
-      String jsonStringGreen = JSON.stringify(settingsParsed["green"]);
-      String jsonStringBlue = JSON.stringify(settingsParsed["blue"]);
-
-      int red = int(settingsParsed["red"]);
-      int green = int(settingsParsed["green"]);
-      int blue = int(settingsParsed["blue"]);
 
       Serial.print("R ");
       Serial.println(red);
