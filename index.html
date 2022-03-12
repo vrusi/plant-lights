@@ -6,17 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plant Lights</title>
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
 </head>
 
 <body>
-    <form action="/" method="post">
-        <label for="red">R</label>
-        <input type="number" id="red" name="red" min="0" max="255"><br><br>
-        <label for="green">G</label>
-        <input type="number" id="green" name="green" min="0" max="255"><br><br>
-        <label for="blue">B</label>
-        <input type="number" id="blue" name="blue" min="0" max="255"><br><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="container">
+        <div class="form-wrapper">
+            <h1>Colour setter</h1>
+            <form action="/" method="post">
+
+                <div class="input-wrapper">
+                    <label for="input-red">R</label>
+                    <div class="slidecontainer">
+                        <input type="range" min="0" max="255" value="0" class="slider" id="slider-red">
+                    </div>
+                    <input type="number" id="input-red" name="input-red" min="0" max="255" placeholder="0 - 255">
+                </div>
+
+
+
+                <div class="input-wrapper">
+
+                    <label for="input-green">G</label>
+                    <div class="slidecontainer">
+                        <input type="range" min="0" max="255" value="0" class="slider" id="slider-green">
+                    </div>
+                    <input type="number" id="input-green" name="input-green" min="0" max="255" placeholder="0 - 255">
+                </div>
+
+                <div class="input-wrapper">
+
+                    <label for="input-blue">B</label>
+                    <div class="slidecontainer">
+                        <input type="range" min="0" max="255" value="0" class="slider" id="slider-blue">
+                    </div>
+                    <input type="number" id="input-blue" name="input-blue" min="0" max="255" placeholder="0 - 255">
+                </div>
+
+
+                <input type="submit" id="button" value="Submit">
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="script.js"></script>
+
 </body>
+
 </html>

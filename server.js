@@ -11,6 +11,8 @@ const redisClient = redis.createClient({
     url: process.env.REDIS_URL
 });
 
+app.use(express.static(__dirname + '/public'));
+
 app.use(bodyParser.urlencoded({
     extended: true
 }));
