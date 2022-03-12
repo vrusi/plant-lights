@@ -23,7 +23,6 @@ app.set('views', './views')
 
 redisClient.on('connect', () => console.log('Connected to Redis Client'));
 redisClient.on('error', (err) => console.log('Redis Client Error', err));
-redisClient.on('quit', () => console.log('Redis Client quit'));
 
 async function getData() {
     try {
@@ -43,9 +42,7 @@ async function setData(data) {
     console.log('Setting data:\n' + data);
     try {
         await redisClient.connect();
-        console.log(data);
         let res = await redisClient.set('data', data);
-        console.log(res);
         redisClient.quit();
         console.log('Data successfuly set.');
     } catch (error) {
@@ -69,7 +66,6 @@ app.get('/', async (req, res) => {
 })
 
 app.post('/', jsonParser, async (req, res) => {
-    console.log(req.body)
     dataObj = {
         red: +req.body.red,
         green: +req.body.green,
@@ -77,9 +73,10 @@ app.post('/', jsonParser, async (req, res) => {
     }
     data = Buffer.from(JSON.stringify(dataObj));
     await setData(data);
+    res.sendStatus(200);
 })
 
-app.get('/lights', async (req, res) => {
+app.get('/data', async (req, res) => {
     const data = await getData();
     res.send(data);
 })

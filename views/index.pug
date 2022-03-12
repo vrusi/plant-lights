@@ -18,27 +18,28 @@
                     <label for="input-red">R</label>
 
                     <div class="slidecontainer">
-                        input(type='range', min=0, max=255, value=red, class='slider', id='slider-red')
+                        input(class='slider', id='slider-red', type='range', min=0, max=255, value=red)
                     </div>
-                    input(type='number', id='input-red', name='red', min=0, max=0, placeholder='0 - 255', value=red)
+
+                    input(id='input-red', type='number', min=0, max=255, value=red, name='red', placeholder='0 - 255')
                 </div>
 
                 <div class="input-wrapper">
                     <label for="input-green">G</label>
                     
                     <div class="slidecontainer">
-                        input(type='range', min=0, max=255, value=green, class='slider', id='slider-green')
+                        input(class='slider', id='slider-green', type='range', min=0, max=255, value=green)
                     </div>
-                    input(type='number', id='input-green', name='green', min=0, max=0, placeholder='0 - 255', value=green)
+                    input(id='input-green', type='number', min=0, max=255, value=green, name='green',  placeholder='0 - 255')
                 </div>
 
                 <div class="input-wrapper">
                     <label for="input-blue">B</label>
 
                     <div class="slidecontainer">
-                        input(type='range', min=0, max=255, value=blue, class='slider', id='slider-blue')
+                        input(class='slider', id='slider-blue', type='range', min=0, max=255, value=blue)
                     </div>
-                    input(type='number', id='input-blue', name='blue', min=0, max=0, placeholder='0 - 255', value=blue)
+                    input(id='input-blue', type='number', min=0, max=255, value=blue, name='blue', placeholder='0 - 255')
                 </div>
 
                 <h2>Preview</h2>
@@ -50,7 +51,6 @@
     </div>
 
     <script type="text/javascript" src="script.js"></script>
-
 </body>
 
 </html>
