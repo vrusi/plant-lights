@@ -16,32 +16,35 @@
             <form action="/" method="post">
                 <div class="input-wrapper">
                     <label for="input-red">R</label>
+
                     <div class="slidecontainer">
                         input(type='range', min=0, max=255, value=red, class='slider', id='slider-red')
-                        
                     </div>
-                    <input type="number" id="input-red" name="input-red" min="0" max="255" placeholder="0 - 255">
+                    input(type='number', id='input-red', name='red', min=0, max=0, placeholder='0 - 255', value=red)
                 </div>
-                <div class="input-wrapper">
 
+                <div class="input-wrapper">
                     <label for="input-green">G</label>
+                    
                     <div class="slidecontainer">
                         input(type='range', min=0, max=255, value=green, class='slider', id='slider-green')
                     </div>
-                    <input type="number" id="input-green" name="input-green" min="0" max="255" placeholder="0 - 255">
+                    input(type='number', id='input-green', name='green', min=0, max=0, placeholder='0 - 255', value=green)
                 </div>
 
                 <div class="input-wrapper">
-
                     <label for="input-blue">B</label>
+
                     <div class="slidecontainer">
                         input(type='range', min=0, max=255, value=blue, class='slider', id='slider-blue')
                     </div>
-                    <input type="number" id="input-blue" name="input-blue" min="0" max="255" placeholder="0 - 255">
+                    input(type='number', id='input-blue', name='blue', min=0, max=0, placeholder='0 - 255', value=blue)
                 </div>
 
+                <h2>Preview</h2>
+                div(id='preview', style=`background-color: rgb(${red},${green},${blue}`)
 
-                <input type="submit" id="button" value="Submit">
+                <input type="submit" value="Submit">
             </form>
         </div>
     </div>
