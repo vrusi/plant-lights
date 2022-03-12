@@ -34,3 +34,5 @@ inputGreen.onchange = function() {
 inputBlue.onchange = function() {
     sliderBlue.value = this.value;
 }
+
+console.log(test);

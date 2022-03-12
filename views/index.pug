@@ -11,26 +11,22 @@
 
 <body>
     <div class="container">
-        <p>Test: "<%= test %>"</p>
         <div class="form-wrapper">
             <h1>Colour setter</h1>
             <form action="/" method="post">
-
                 <div class="input-wrapper">
                     <label for="input-red">R</label>
                     <div class="slidecontainer">
-                        <input type="range" min="0" max="255" value="0" class="slider" id="slider-red">
+                        input(type='range', min=0, max=255, value=red, class='slider', id='slider-red')
+                        
                     </div>
                     <input type="number" id="input-red" name="input-red" min="0" max="255" placeholder="0 - 255">
                 </div>
-
-
-
                 <div class="input-wrapper">
 
                     <label for="input-green">G</label>
                     <div class="slidecontainer">
-                        <input type="range" min="0" max="255" value="0" class="slider" id="slider-green">
+                        input(type='range', min=0, max=255, value=green, class='slider', id='slider-green')
                     </div>
                     <input type="number" id="input-green" name="input-green" min="0" max="255" placeholder="0 - 255">
                 </div>
@@ -39,7 +35,7 @@
 
                     <label for="input-blue">B</label>
                     <div class="slidecontainer">
-                        <input type="range" min="0" max="255" value="0" class="slider" id="slider-blue">
+                        input(type='range', min=0, max=255, value=blue, class='slider', id='slider-blue')
                     </div>
                     <input type="number" id="input-blue" name="input-blue" min="0" max="255" placeholder="0 - 255">
                 </div>
@@ -50,9 +46,6 @@
         </div>
     </div>
 
-    <script>
-        let test = "<%= test %>"
-    </script>
     <script type="text/javascript" src="script.js"></script>
 
 </body>
