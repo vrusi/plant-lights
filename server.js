@@ -26,27 +26,46 @@ redisClient.on('error', (err) => console.log('Redis Client Error', err));
 redisClient.on('quit', () => console.log('Redis Client quit'));
 
 async function getData() {
-    await redisClient.connect();
-    const data = await redisClient.get('data');
-    redisClient.quit();
-    return JSON.parse(data.toString());
+    try {
+        console.log('Getting data...');
+        await redisClient.connect();
+        const data = await redisClient.get('data');
+        redisClient.quit();
+        console.log('Data received:\n' + data);
+        return !!data ? JSON.parse(data.toString()) : null;
+    } catch (error) {
+        console.error('Error while getting data.');
+        console.error(error);
+    }
 }
 
 async function setData(data) {
-    await redisClient.connect();
-    console.log(data);
-    let res = await redisClient.set('data', data);
-    console.log(res);
-    redisClient.quit();
+    console.log('Setting data:\n' + data);
+    try {
+        await redisClient.connect();
+        console.log(data);
+        let res = await redisClient.set('data', data);
+        console.log(res);
+        redisClient.quit();
+        console.log('Data successfuly set.');
+    } catch (error) {
+        console.error('Error while setting data');
+        console.error(error);
+    }
 }
 
 app.get('/', async (req, res) => {
     const data = await getData();
-    res.render('index', {
-        red: data.red || 0,
-        green: data.green || 0,
-        blue: data.blue || 0,
-    });
+    try {
+        res.render('index', {
+            red: data ? data.red || 0 : 0,
+            green: data ? data.green || 0 : 0,
+            blue: data ? data.blue || 0 : 0,
+        });
+    } catch (error) {
+        console.error('Error while rendering index.html');
+        console.error(error);
+    }
 })
 
 app.post('/', jsonParser, async (req, res) => {
