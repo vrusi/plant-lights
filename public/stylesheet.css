@@ -10,6 +10,7 @@ body {
     height: 100vh;
     width: 100vw;
     color: #39432b;
+    background-attachment: fixed;
 }
 
 .container {
@@ -18,6 +19,7 @@ body {
     max-width: 40vw;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 5rem;
     border-radius: 20px;
     padding: 40px;
     box-sizing: border-box;
@@ -157,12 +159,19 @@ table {
     height: 1rem;
 }
 
-.col-narrow {
-    width: 0;
-    padding: 0 0.2rem;
-}
-
 .preview-table {
     height: 100%;
     width: 100%;
+}
+
+.col-narrow {
+    display: none;
+}
+
+@media only screen and (min-width: 600px) {
+    .col-narrow {
+        display: table-cell;
+        width: 0;
+        padding: 0 0.2rem;
+    }
 }

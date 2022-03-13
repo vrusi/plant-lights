@@ -4,7 +4,6 @@ head
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet', type='text/css', href='stylesheet.css')
-    link(rel="stylesheet", href="https://www.w3schools.com/w3css/4/w3.css")
     link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
     title Plant Lights 
 
@@ -17,30 +16,31 @@ body
 
     .container
         h1 Colour presets
-        table 
-            tr 
-                th Label 
-                th R 
-                th G
-                th B
-                th.col-narrow Preview 
-                th
-                    i.fa.fa-play.icon
-                th
-                    i.fa.fa-trash.icon
-            each preset in presets 
-                form(action='/presets/' + preset.label method="POST") 
-                    tr 
-                        td= preset.label
-                        td= preset.setting.red
-                        td= preset.setting.green
-                        td= preset.setting.blue
-                        td 
-                            div(class='preview-table', style=`background-color: rgb(${preset.setting.red},${preset.setting.green},${preset.setting.blue})`)
-                        td
-                            input(class="button small" type="submit", value="set", name="action")
-                        td
-                            input(class="button small" type="submit", value="delete", name="action")
-            else 
+        div(style="overflow-x:auto;")
+            table 
                 tr 
-                    td No saved presets
+                    th Label 
+                    th R 
+                    th G
+                    th B
+                    th.col-narrow Preview 
+                    th
+                        i.fa.fa-play.icon
+                    th
+                        i.fa.fa-trash.icon
+                each preset in presets 
+                    form(action='/presets/' + preset.label method="POST") 
+                        tr 
+                            td= preset.label
+                            td= preset.setting.red
+                            td= preset.setting.green
+                            td= preset.setting.blue
+                            td.col-narrow 
+                                div(class='preview-table', style=`background-color: rgb(${preset.setting.red},${preset.setting.green},${preset.setting.blue})`)
+                            td
+                                input(class="button small" type="submit", value="set", name="action")
+                            td
+                                input(class="button small" type="submit", value="delete", name="action")
+                else 
+                    tr 
+                        td No saved presets
