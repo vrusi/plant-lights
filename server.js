@@ -1,6 +1,4 @@
 const express = require('express');
-const path = require('path');
-const fs = require('fs');
 const bodyParser = require('body-parser');
 const redis = require('redis');
 const pug = require('pug');
@@ -21,29 +19,29 @@ app.use(bodyParser.urlencoded({
 app.set('view engine', 'pug')
 app.set('views', './views')
 
-redisClient.on('connect', () => console.log('Connected to Redis Client'));
-redisClient.on('error', (err) => console.log('Redis Client Error', err));
+redisClient.on('connect', () => console.log('\nConnected to Redis Client'));
+redisClient.on('error', (err) => console.log('\nRedis Client Error', err));
 
 async function getData(key) {
     try {
-        console.log(`Getting data: ${key}...`);
+        console.log(`\nGETTING ${key}`);
         const data = await redisClient.get(key);
-        console.log('Data received:\n' + data);
+        console.log(`RECEIVED ${key}: ${data}`);
         return !!data ? JSON.parse(data.toString()) : null;
     } catch (error) {
-        console.error('Error while getting data.');
+        console.error('\nERROR while getting data:');
         console.error(error);
     }
 }
 
 async function setData(key, value) {
-    console.log(`Setting ${key}: ${value}`);
+    console.log(`\nSETTING ${key}: ${JSON.stringify(value)}`);
     try {
         const valueBuffer = Buffer.from(JSON.stringify(value));
         await redisClient.set(key, valueBuffer);
-        console.log(`Data (${key}) successfuly set.`);
+        console.log(`SET SUCCESSFUL ${key}: ${JSON.stringify(value)}`);
     } catch (error) {
-        console.error('Error while setting data');
+        console.error('\nERROR while setting data:');
         console.error(error);
     }
 }
@@ -54,7 +52,6 @@ function getPreset(presets, label) {
             return preset.setting;
         }
     }
-
     return null;
 }
 
@@ -67,7 +64,7 @@ app.get('/', async (req, res) => {
                 presets: presets ? presets : null,
             });
         } catch (error) {
-            console.error('Error while rendering presets.pug');
+            console.error('ERROR while rendering presets.pug');
             console.error(error);
         }
     } else {
@@ -79,7 +76,7 @@ app.get('/', async (req, res) => {
                 blue: data ? data.blue || 0 : 0,
             });
         } catch (error) {
-            console.error('Error while rendering index.pug');
+            console.error('ERROR while rendering index.pug');
             console.error(error);
         }
     }
@@ -129,6 +126,6 @@ app.post('/presets/:id', async (req, res) => {
 });
 
 app.listen(port, async () => {
-    console.log(`Plant Lights app listening on port ${port}`);
+    console.log(`\nPlant Lights app listening on port ${port}.`);
     await redisClient.connect();
 })
