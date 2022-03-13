@@ -19,13 +19,16 @@ body {
     max-width: 40vw;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 5rem;
     border-radius: 20px;
     padding: 40px;
     box-sizing: border-box;
     background: rgb(217 222 216 / 85%);
     box-shadow: 14px 14px 20px rgb(207 213 206 / 80%),
         -14px -14px 20px rgb(229 235 228 / 80%);
+}
+
+.spacer {
+    height: 5rem;
 }
 
 .input-wrapper {
