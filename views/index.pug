@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+doctype html
 html(lang='en')
 head 
     meta(charset='UTF-8')
@@ -6,34 +6,43 @@ head
     link(rel='stylesheet', type='text/css', href='stylesheet.css')
     title Plant Lights 
 
-body 
-    .container 
-        .form-wrapper 
-            h1 Colour setter 
-            form(action='/' method='POST')
-                .input-wrapper 
-                    label(for='input-red') R
-                    .slidecontainer 
-                        input(class='slider', id='slider-red', type='range', min=0, max=255, value=red)
-                        
-                    input(id='input-red', type='number', min=0, max=255, value=red, name='red', placeholder='0 - 255')
-                    
-                .input-wrapper 
-                    label(for='input-green') G
-                    .slidecontainer 
-                        input(class='slider', id='slider-green', type='range', min=0, max=255, value=green)
-                        
-                    input(id='input-green', type='number', min=0, max=255, value=green, name='green', placeholder='0 - 255')
+body
+    ul
+        li
+            a(href="/?current=setter") setter
+        li 
+            a(href="/?current=presets") presets
 
-                .input-wrapper 
-                    label(for='input-blue') B
-                    .slidecontainer 
-                        input(class='slider', id='slider-blue', type='range', min=0, max=255, value=blue)
-                        
-                    input(id='input-blue', type='number', min=0, max=255, value=blue, name='blue', placeholder='0 - 255')
+    .container 
+        h1 Colour setter 
+        form(action='/' method='POST')
+            .input-wrapper 
+                label(for='input-red') R
+                .slidecontainer 
+                    input(class='slider', id='slider-red', type='range', min=0, max=255, value=red)
+                    
+                input(id='input-red', type='number', min=0, max=255, value=red, name='red', placeholder='0 - 255')
                 
-                h2 Preview 
-                div(id='preview', style=`background-color: rgb(${red},${green},${blue}`)
-                input(type='submit', value='Submit')
+            .input-wrapper 
+                label(for='input-green') G
+                .slidecontainer 
+                    input(class='slider', id='slider-green', type='range', min=0, max=255, value=green)
+                    
+                input(id='input-green', type='number', min=0, max=255, value=green, name='green', placeholder='0 - 255')
+            .input-wrapper 
+                label(for='input-blue') B
+                .slidecontainer 
+                    input(class='slider', id='slider-blue', type='range', min=0, max=255, value=blue)
+                    
+                input(id='input-blue', type='number', min=0, max=255, value=blue, name='blue', placeholder='0 - 255')
+            
+            h2 Preview 
+            div(id='preview', style=`background-color: rgb(${red},${green},${blue})`)
+            input(type='submit', value='Set colour' class="button")
+            hr
+            .preset-container 
+                label(for='preset-label') Preset label
+                input(id='preset-label' type='text', name='label' placeholder='red' )
+                input(type='submit', value='Save preset' class="button small")
 
 script(type='text/javascript' src='script.js')
