@@ -135,6 +135,9 @@ li a:hover {
 
 hr {
     margin: 2rem 0;
+    border: 0;
+    height: 1px;
+    background: #c3c3a8;
 }
 
 .preset-container label,
